@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2</title>
+    <style>
+      body {
+        background-color: black;
+        overflow: hidden;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .gradient-bar {
+        position: absolute;
+        left: 200px;
+        top: 100px;
+        height: 120px;
+        background: linear-gradient(to right, red, white);
+        transform: skewX(-60deg);
+        width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-bar" id="bar"></div>
+
+    <script>
+      let bar = document.getElementById("bar");
+      let maxWidth = 800;
+      let speed = 1;
+      let width = 0;
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function animate() {
+        if (width < maxWidth) {
+          width += speed;
+        } else {
+          width = 0;
+          bar.style.background = `linear-gradient(to right, ${getRandomColor()}, ${getRandomColor()})`;
+        }
+        bar.style.width = width + "px";
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>

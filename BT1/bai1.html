@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 1</title>
+    <style>
+      body {
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .circle {
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle" id="circle"></div>
+
+    <script>
+      let size = 25;
+      let minSize = 25;
+      let maxSize = 500;
+      let speed = 1;
+
+      function expandCircle() {
+        if (size < maxSize) {
+          size += speed;
+        } else {
+          size = minSize;
+        }
+
+        let circle = document.getElementById("circle");
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+
+        requestAnimationFrame(expandCircle);
+      }
+
+      expandCircle();
+    </script>
+  </body>
+</html>
